@@ -1,4 +1,5 @@
 #include <iostream>
+
 int* sortArray(int* arr,int size){
     int* ret=new int[size]; int c0=0,c1=0,c2=0;
     for(int i=0;i<size;i++){
@@ -50,8 +51,12 @@ int* inPlaceSort(int* arr,int size){
     return arr;
 }
 
-int* optimsiedInPlace(int* arr,int size){
-    
+int* optimisedInplace(int* arr,int size){
+    int insert0=0,insert1=0,insert2=0;
+    int* result=new int[size];
+    while(insert2<size){
+        //tbc
+    }
 }
 
 int main(){
