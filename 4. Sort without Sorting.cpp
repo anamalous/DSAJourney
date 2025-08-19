@@ -51,14 +51,6 @@ int* inPlaceSort(int* arr,int size){
     return arr;
 }
 
-int* optimisedInplace(int* arr,int size){
-    int insert0=0,insert1=0,insert2=0;
-    int* result=new int[size];
-    while(insert2<size){
-        //tbc
-    }
-}
-
 int main(){
     int arr[]={0,2,1,2,1,0,1,0};
     int* res=inPlaceSort(arr,8);
