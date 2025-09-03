@@ -5,7 +5,7 @@
 using std::string;
 
 int myAtoi(string s) {
-    int sign=1,i=0; long long res=0;
+    int sign=1,i=0,dig=0; long long res=0;
     while(s[i]==' '){
         i++;continue;
     }
@@ -18,6 +18,11 @@ int myAtoi(string s) {
         i++;continue;
     }
     while(s[i]>='0'&&s[i]<='9'){
+        dig=s[i]-'0';
+        if(sign*(res*10+dig) < INT32_MIN)
+            return INT32_MIN;
+        if(sign*(res*10+dig) > INT32_MAX)
+            return INT32_MAX;
         res=res*10+(s[i]-'0');i++;
     }       
     res=res*sign;
