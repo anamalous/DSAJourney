@@ -10,11 +10,11 @@ vector<int> kLargest(vector<int> arr, int k) {
         heap.push_back(i);
         curr=heap.size()-1;
 
-        while(heap[curr]<heap[curr/2]){
+        while(heap.size()>1&&heap[curr]<heap[(curr-1)/2]){
             temp=heap[curr];
-            heap[curr]=heap[curr/2];
-            heap[curr/2]=temp;
-            curr=curr/2;
+            heap[curr]=heap[(curr-1)/2];
+            heap[(curr-1)/2]=temp;
+            curr=(curr-1)/2;
         }   
 
         if(heap.size()>k){
@@ -22,20 +22,13 @@ vector<int> kLargest(vector<int> arr, int k) {
             heap.pop_back();
 
             curr=0;
-            while(curr<heap.size()&&(heap[curr]>heap[2*curr]||heap[curr]>heap[2*curr+1])){
-                if(heap[2*curr]<heap[2*curr+1]){
-                    temp=heap[curr];
-                    heap[curr]=heap[2*curr];
-                    heap[2*curr]=temp;
-                    curr=2*curr;
-                }
-                else{
-                    temp=heap[curr];
-                    heap[curr]=heap[2*curr+1];
-                    heap[2*curr+1]=temp;
-                    curr=2*curr+1;
-                }
-                
+            int currchild=heap[2*curr+1]<heap[2*curr+2]?2*curr+1:2*curr+2;
+            while(curr<heap.size()&&(heap[curr]>heap[currchild])){
+                temp=heap[curr];
+                heap[curr]=heap[currchild];
+                heap[currchild]=temp;
+                curr=currchild;
+                currchild=heap[2*curr+1]<heap[2*curr+2]?2*curr+1:2*curr+2;
             }
         }
     }
